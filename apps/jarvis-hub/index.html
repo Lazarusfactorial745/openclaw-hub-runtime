@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw // J.A.R.V.I.S. HUD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../packages/themes/jarvis/theme.css">
+</head>
+<body class="h-screen w-screen overflow-hidden bg-[#050B14] text-[#D9F7FF] antialiased">
+<div id="wake-up-flash" class="wake-up-flash pointer-events-none absolute inset-0 z-30 bg-[radial-gradient(circle_at_center,rgba(0,243,255,0.14),rgba(0,243,255,0.04)_35%,transparent_75%)]"></div>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 hud-grid opacity-45"></div>
+    <div class="absolute inset-0 scanlines"></div>
+    <div class="absolute -left-24 top-8 h-80 w-80 rounded-full bg-[#00F3FF]/[0.08] blur-3xl"></div>
+    <div class="absolute right-[-6rem] top-1/3 h-[28rem] w-[28rem] rounded-full bg-[#0062ff]/[0.07] blur-3xl"></div>
+    <div class="absolute bottom-[-8rem] left-1/3 h-[24rem] w-[24rem] rounded-full bg-[#FF9D00]/[0.05] blur-3xl"></div>
+    <div class="absolute left-[22rem] top-12 h-32 w-32 rounded-full border border-[#00F3FF]/10"></div>
+    <div class="absolute right-28 top-24 h-52 w-52 rounded-full border border-[#00F3FF]/[0.05]"></div>
+  </div>
+
+  <div class="relative flex h-full w-full">
+    <aside class="w-72 shrink-0 border-r border-[#00f3ff]/15 bg-[#08101a]/55 backdrop-blur-xl">
+      <div class="flex h-full flex-col px-5 py-6">
+        <div class="chrome-glow rounded-3xl border border-[#00f3ff]/15 bg-black/20 p-5">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-[#00f3ff]/30 bg-[#07111f]/70 shadow-neon-soft breathing-glow">
+              <div class="absolute h-8 w-8 rounded-full border border-[#00f3ff]/35"></div>
+              <div class="h-2 w-2 rounded-full bg-[#00F3FF] shadow-[0_0_12px_#00f3ff]"></div>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.26em] text-[#5D7385]">神经接口</p>
+              <h1 class="text-lg font-semibold uppercase tracking-[0.18em] text-[#D9F7FF]">OpenClaw // J.A.R.V.I.S.</h1>
+            </div>
+          </div>
+          <p class="font-mono text-[11px] leading-relaxed text-[#8CA3B3]">
+            战术对话界面已初始化。延迟曲线稳定，语音通道待命中。
+          </p>
+        </div>
+
+        <nav class="mt-8 flex-1 space-y-2">
+          <a href="#" class="group relative flex items-center gap-3 overflow-hidden rounded-2xl bg-[#00f3ff]/[0.06] px-4 py-3 text-[#00F3FF] shadow-[inset_0_0_0_1px_rgba(0,243,255,0.08)]">
+            <span class="absolute inset-y-2 left-0 w-0.5 rounded-full bg-[#00F3FF] shadow-[0_0_10px_#00f3ff]"></span>
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M4 5h16M4 12h10M4 19h16"></path>
+            </svg>
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em]">聊天</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#7fdde3]/70">主通道</p>
+            </div>
+          </a>
+
+          <section class="rounded-2xl border border-[#00f3ff]/10 bg-[#00f3ff]/[0.03] px-4 py-3">
+            <div class="mb-3 flex items-center gap-3 text-[#8CA3B3]">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="M12 4v16M4 12h16"></path>
+              </svg>
+              <div>
+                <p class="text-sm font-medium uppercase tracking-[0.18em]">智能体</p>
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5D7385]">执行网络</p>
+              </div>
+            </div>
+            <div id="sidebar-agents-status" class="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#5D7385]">正在连接智能体列表...</div>
+            <div id="sidebar-agents-list" class="space-y-2"></div>
+          </section>
+
+          <a href="#" class="group relative flex items-center gap-3 rounded-2xl px-4 py-3 text-[#8CA3B3] transition hover:bg-[#00f3ff]/[0.04] hover:text-[#D9F7FF]">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M5 7h14M7 12h10M9 17h6"></path>
+            </svg>
+            <div>
+              <p class="text-sm font-medium uppercase tracking-[0.18em]">日志</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5D7385]">系统追踪</p>
+            </div>
+          </a>
+
+          <a href="#" class="group relative flex items-center gap-3 rounded-2xl px-4 py-3 text-[#8CA3B3] transition hover:bg-[#00f3ff]/[0.04] hover:text-[#D9F7FF]">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path d="M6 9V6h12v3M8 18h8M12 9v9"></path>
+            </svg>
+            <div>
+              <p class="text-sm font-medium uppercase tracking-[0.18em]">记忆</p>
+              <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5D7385]">回忆层</p>
+            </div>
+          </a>
+        </nav>
+
+        <div class="chrome-glow rounded-3xl border border-[#00f3ff]/15 bg-black/20 p-4">
+          <div class="mb-3 flex items-center justify-between">
+            <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5D7385]">运行状态</p>
+            <span id="sidebar-link-chip" class="rounded-full border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] telemetry-good">已连接</span>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between gap-4">
+              <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5D7385]">模型</span>
+              <span class="font-mono text-[11px] text-[#D9F7FF]">GMN / GPT-5.3-CODEX</span>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5D7385]">网关</span>
+              <span id="gateway-value" class="font-mono text-[11px] text-[#D9F7FF]">127.0.0.1:18789</span>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-[#5D7385]">延迟</span>
+              <span id="latency-value" class="font-mono text-[11px] text-[#00F3FF]">41ms // 热路径</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="relative flex min-w-0 flex-1 flex-col overflow-hidden">
+      <header class="relative z-10 flex h-[72px] shrink-0 items-center justify-between border-b border-[#00f3ff]/10 bg-[#08101a]/25 px-8 backdrop-blur-md">
+        <div>
+          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-[#5D7385]">对话界面</p>
+          <h2 class="mt-1 text-lg font-semibold uppercase tracking-[0.18em] text-[#D9F7FF]">聊天 // 主通道</h2>
+        </div>
+        <div class="hidden items-center gap-3 md:flex">
+          <span id="link-chip" class="rounded-full border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] telemetry-good">神经链接已激活</span>
+          <span id="voice-chip" class="rounded-full border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] telemetry-good">语音已就绪</span>
+          <span class="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-[#8CA3B3]">会话 A-07</span>
+        </div>
+        <div class="text-right">
+          <p class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5D7385]">节点 / 本机</p>
+          <p id="clock-label" class="font-mono text-xs text-[#D9F7FF]">--:--:-- CST</p>
+        </div>
+      </header>
+
+      <main class="relative min-h-0 flex-1 overflow-hidden">
+        <div id="message-scroller" class="message-scroller h-full overflow-y-auto px-8 pb-48 pt-8">
+          <div id="message-stage" class="mx-auto flex min-h-full w-full max-w-5xl flex-col justify-end">
+            <div id="message-list" class="space-y-4"></div>
+            <div id="bottom-sentinel" class="h-px w-full opacity-0"></div>
+          </div>
+        </div>
+
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#050B14] via-[#050B14]/82 to-transparent"></div>
+
+        <button id="scroll-hud-badge" type="button" class="scroll-hud-badge is-hidden absolute bottom-28 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3 rounded-full border border-[#00f3ff]/18 bg-[#08101d]/70 px-4 py-2 text-left">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full border border-[#00f3ff]/25 bg-[#00f3ff]/[0.05] text-[#00F3FF]">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </span>
+          <span>
+            <span class="block font-mono text-[10px] uppercase tracking-[0.24em] text-[#7fdde3]">新数据流入中...</span>
+            <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-[#5D7385]">返回底部锁定</span>
+          </span>
+        </button>
+
+        <form id="prompt-form" class="floating-console chrome-glow absolute bottom-6 left-1/2 z-20 flex w-[min(920px,calc(100%-3rem))] -translate-x-1/2 items-center gap-4 rounded-full border border-[#00f3ff]/20 bg-[#08101d]/70 px-5 py-4 shadow-[0_0_24px_rgba(0,243,255,0.10),0_0_55px_rgba(0,243,255,0.06)]">
+          <button id="mic-button" type="button" class="breathing-glow mic-ready flex h-12 w-12 shrink-0 items-center justify-center rounded-full border shadow-[0_0_18px_rgba(0,243,255,0.12)] transition">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M12 4a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V7a3 3 0 0 1 3-3Z"></path>
+              <path d="M19 11a7 7 0 0 1-14 0M12 18v3M8 21h8"></path>
+            </svg>
+          </button>
+
+          <div class="min-w-0 flex-1">
+            <p id="console-status" class="font-mono text-[10px] uppercase tracking-[0.24em] text-[#5D7385]">指令控制台 // 语音输入已待命</p>
+            <div class="mt-1 flex items-center gap-2">
+              <input id="prompt-input" class="hud-input w-full bg-transparent font-mono text-sm text-[#D9F7FF] outline-none placeholder:text-[#8CA3B3]" type="text" autocomplete="off" placeholder="输入指令、系统提示词或操作请求..." />
+            </div>
+          </div>
+
+          <button id="send-button" type="submit" class="group flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#00f3ff]/35 bg-[#00F3FF]/90 text-[#021018] shadow-[0_0_14px_rgba(0,243,255,0.34)] transition hover:shadow-[0_0_10px_#00f3ff,0_0_22px_rgba(0,243,255,0.5)]">
+            <svg class="h-6 w-6 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M5 12h12"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </button>
+        </form>
+      </main>
+    </section>
+  </div>
+  <script type="module" src="./copy.zh-CN.js"></script>
+  <script src="./hub.config.js"></script>
+  <script type="module" src="../../packages/runtime/openclaw-hub-runtime.js"></script>
+</body>
+</html>

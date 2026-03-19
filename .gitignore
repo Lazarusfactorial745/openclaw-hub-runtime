@@ -1,0 +1,35 @@
+# Secrets and local auth
+*.token
+*.secret
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Local runtime / temp
+node_modules/
+dist/
+build/
+.tmp/
+tmp/
+.temp/
+.cache/
+coverage/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python static server / tooling noise
+__pycache__/
+*.pyc
+
+# Local OpenClaw / workspace artifacts
+.autonomous/
+.chrome-headless-*/
+
+# Keep only intentionally published top-level screenshots; move experimental variants later if needed
