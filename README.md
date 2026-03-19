@@ -1,13 +1,13 @@
 # OpenClaw Hub Runtime
 
-**Build themeable real-time AI command interfaces on top of the real OpenClaw Gateway.**
-
-OpenClaw Hub Runtime is a modular frontend runtime for AI command surfaces with **streaming UX**, **reconnect-aware diagnostics**, **resume/recovery foundations**, and **reusable shell bindings**.
+**A reusable runtime for themeable real-time AI command interfaces on top of the real OpenClaw Gateway.**
 
 > Not just another chat skin.  
 > A runtime for battle-ready AI terminals.
 
-## Why this repo is worth your attention
+OpenClaw Hub Runtime is a modular frontend runtime for AI command surfaces with **streaming UX**, **reconnect-aware diagnostics**, **resume/recovery foundations**, and **reusable shell bindings**.
+
+## Why this repo is worth a star
 
 - **Real backend, not a mock demo** — built around actual OpenClaw Gateway integration
 - **Runtime, not a one-off shell** — one runtime already powers both a flagship Jarvis shell and a minimal shell
@@ -39,24 +39,7 @@ See `examples/minimal-hub/README.md` and `examples/minimal-hub/index.html`.
 - a deterministic **test harness**
 - a **minimal shell example** proving portability
 
-The product direction is simple:
-
 **Build one runtime once, then launch multiple AI shells on top of it.**
-
----
-
-## Core features
-
-- real OpenClaw Gateway WebSocket connection
-- `connect`, `health`, `chat.history`, `chat.send`, `agents.list`
-- soft-throttled streaming assistant output
-- fenced code block rendering as sub-terminals
-- sidebar agent list
-- diagnostics-first reconnect UX
-- resume / reconcile / replay foundations
-- built-in `/diagnose` and `/test-resume` showcase commands
-- shared Chinese copy support
-- reusable shell binding through `HUB_CONFIG`
 
 ---
 
@@ -105,7 +88,22 @@ For a fuller setup guide, see `docs/getting-started.md`.
 
 ---
 
-## Why star this repo
+## Core features
+
+- real OpenClaw Gateway WebSocket connection
+- `connect`, `health`, `chat.history`, `chat.send`, `agents.list`
+- soft-throttled streaming assistant output
+- fenced code block rendering as sub-terminals
+- sidebar agent list
+- diagnostics-first reconnect UX
+- resume / reconcile / replay foundations
+- built-in `/diagnose` and `/test-resume` showcase commands
+- shared Chinese copy support
+- reusable shell binding through `HUB_CONFIG`
+
+---
+
+## Why follow this project
 
 Star this if you care about any of these directions:
 
